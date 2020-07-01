@@ -15,6 +15,8 @@ import * as Actions from '../actions/actionCreator';
 import {bindActionCreators} from 'redux';
 import ChatSelector from "../container/chatSelectorContainer"
 import { TENOR } from "../config_style/reaction/tenor";
+// import ProfilePage from "../"
+import ProfilePage from '../container/profile_mContainer'
 
 const tenor = TENOR();
 
@@ -58,6 +60,7 @@ class AllRoutes extends Component {
                     <Scene key="BAD_SBF" component={HomeSearchAfterFocus} hideNavBar={true} />
                     <Scene key="BAD_PRF" component={ProfileScreen} hideNavBar={true} />
                     <Scene key="BAD_CHS" component={ChatSelector} hideNavBar={true} />
+                    <Scene key="BAD_UPF" component={ProfilePage} hideNavBar={true} />
                 </Modal>
             </Router>
         )

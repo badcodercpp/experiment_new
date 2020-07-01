@@ -26,6 +26,11 @@ class NavBar extends Component {
         //const { actions } = this.props;
         //actions.SHORTCUT_TOGGLE_DISPATCH(false) 
     }
+    
+    opneProfileScreen(){
+        Actions.BAD_UPF()
+    }
+
     render(){
         const { colors } = this.props.theme;
         return (
@@ -53,7 +58,7 @@ class NavBar extends Component {
                             <Appbar.Action icon="notifications" onPress={() => console.log('Pressed delete')} />
                         </View>
                         <View style={{flex:1,flexDirection:"column",justifyContent:"center",alignItems:"center"}} >
-                            <Appbar.Action icon="person" onPress={() => console.log('Pressed delete')} />
+                            <Appbar.Action icon="person" onPress={(e) => this.opneProfileScreen(e)} />
                         </View>
                     </View>
                 </Appbar>
