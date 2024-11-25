@@ -84,3 +84,27 @@ const styles = {
 
 export default NumberInput;
 
+
+const formatNumber = (input: string) => {
+    // Remove all characters except numbers and decimal points
+    let formattedValue = input.replace(/[^0-9.]/g, '');
+
+    // Prevent multiple decimal points
+    if ((formattedValue.match(/\./g) || []).length > 1) {
+      formattedValue = formattedValue.slice(0, formattedValue.lastIndexOf('.'));
+    }
+
+    // Format the integer part with commas for thousands and hundreds
+    const parts = formattedValue.split('.');
+    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ','); // Add commas for thousands
+
+    // Handle hundreds formatting (e.g., "100,000" -> "1,00,000" for Indian numbering system)
+    if (parts[0].length > 3) {
+      const prefix = parts[0].slice(0, parts[0].length - 3);
+      const suffix = parts[0].slice(parts[0].length - 3);
+      parts[0] = prefix.replace(/\B(?=(\d{2})+(?!\d))/g, ',') + ',' + suffix;
+    }
+
+    return parts.join('.');
+  };
+
